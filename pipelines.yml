@@ -20,6 +20,7 @@ pipelines:
         configuration:
           inputResources:
             - name: foo
+            - name: git
           healthCheckUrl: https://api.github.com
       - name: health_check_2
         type: HealthCheck
