@@ -22,6 +22,9 @@ pipelines:
             - name: foo
             - name: git
           healthCheckUrl: https://api.github.com
+        execution:
+          onStart:
+            - printenv
       - name: health_check_2
         type: HealthCheck
         syntaxVersion: 0.0.2
