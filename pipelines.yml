@@ -4,6 +4,13 @@ resources:
     syntaxVersion: 1.0.0
     configuration:
       foo: bar
+  - name: git
+    type: GitRepo
+    configuration:
+      path: bharath92/extensions
+      gitProvider: ghint
+      branches:
+        include: ^master$
 pipelines:
   - name: sample_pipeline
     steps:
