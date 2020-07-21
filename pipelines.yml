@@ -1,9 +1,8 @@
-# resources:
-#   - name: foo
-#     type: SampleResource
-#     syntaxVersion: 1.0.0
-#     configuration:
-#       foo: bar
+resources:
+  - name: foo
+    type: namespace1/sampleResource
+    configuration:
+      foo: bar
 pipelines:
   - name: sample_pipeline
     steps:
@@ -11,8 +10,8 @@ pipelines:
         type: namespace/sampleStep
         syntaxVersion: latest
         configuration:
-          # inputResources:
-          #   - name: foo
+          inputResources:
+            - name: foo
           foo: lol
         execution:
           onStart:
