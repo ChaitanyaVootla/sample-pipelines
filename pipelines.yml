@@ -1,24 +1,24 @@
-resources:
-  - name: foo
-    type: SampleResource
-    syntaxVersion: 1.0.0
-    configuration:
-      foo: bar
+# resources:
+#   - name: foo
+#     type: SampleResource
+#     syntaxVersion: 1.0.0
+#     configuration:
+#       foo: bar
 pipelines:
   - name: sample_pipeline
     steps:
       - name: health_check_1
-        type: HealthCheck
-        syntaxVersion: 0.0.1
+        type: namespace/sampleStep
+        syntaxVersion: latest
         configuration:
-          inputResources:
-            - name: foo
-          healthCheckUrl: https://api.github.com
-      - name: health_check_2
-        type: HealthCheck
-        syntaxVersion: 0.0.2
-        configuration:
-          inputSteps:
-            - name: health_check_1
-          healthCheckUrl: https://api.github.com
-          notifyOnSuccess: false
+          # inputResources:
+          #   - name: foo
+          foo: lol
+      # - name: health_check_2
+      #   type: HealthCheck
+      #   syntaxVersion: 0.0.2
+      #   configuration:
+      #     inputSteps:
+      #       - name: health_check_1
+      #     healthCheckUrl: https://api.github.com
+      #     notifyOnSuccess: false
