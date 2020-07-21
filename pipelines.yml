@@ -14,6 +14,9 @@ pipelines:
           # inputResources:
           #   - name: foo
           foo: lol
+        execution:
+          onStart:
+            - node test.js
       # - name: health_check_2
       #   type: HealthCheck
       #   syntaxVersion: 0.0.2
