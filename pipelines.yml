@@ -2,7 +2,7 @@ resources:
   - name: foo
     type: namespace1/sampleResource
     configuration:
-      resourceFoo: bar
+      resourceFoo: 1
 pipelines:
   - name: sample_pipeline
     steps:
