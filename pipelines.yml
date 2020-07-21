@@ -19,6 +19,14 @@ resources:
 pipelines:
   - name: sample_pipeline
     steps:
+      - name: step0
+        type: Bash
+        configuration:
+          inputResources:
+            - name: gitrepores
+        execution:
+         onStart:
+           - echo lol
       - name: step1
         type: shippable/sampleStep
         syntaxVersion: latest
