@@ -28,9 +28,9 @@ pipelines:
             - name: secondres
             # - name: gitrepores
           foo: lol
-        execution:
-          onStart:
-            - node test.js
+        #execution:
+        #  onStart:
+        #    - node test.js
       - name: step2
         type: drydock/sampleStep
         configuration:
