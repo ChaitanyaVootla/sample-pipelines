@@ -5,6 +5,7 @@ resources:
       resourceFoo: 1
   - name: secondres
     type: shippable/sampleResource
+    syntaxVersion: latest
     configuration:
       resourceFoo: 1
   - name: gitrepores
