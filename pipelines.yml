@@ -1,26 +1,38 @@
 resources:
   - name: foo
-    type: namespace1/sampleResource
+    type: qhode/GitRepo
     configuration:
       resourceFoo: 1
+  - name: secondres
+    type: shippable/sampleResource
+    configuration:
+      resourceFoo: 1
+  - name: gitrepores
+    type: GitRepo
+    configuration:
+      path: bharath92/pipelines
+      gitProvider: github
+      branches:
+        include: ^master$
+  
 pipelines:
   - name: sample_pipeline
     steps:
-      - name: health_check_1
-        type: namespace/sampleStep
+      - name: step1
+        type: shippable/sampleStep
         syntaxVersion: latest
         configuration:
           inputResources:
             - name: foo
+            - name: secondres
+            - name: gitrepores
           foo: lol
         execution:
           onStart:
             - node test.js
-      # - name: health_check_2
-      #   type: HealthCheck
-      #   syntaxVersion: 0.0.2
-      #   configuration:
-      #     inputSteps:
-      #       - name: health_check_1
-      #     healthCheckUrl: https://api.github.com
-      #     notifyOnSuccess: false
+      - name: step2
+        type: drydock/sampleStep
+        configuration:
+          inputSteps:
+            - name: step1
+          foo: test
