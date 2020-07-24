@@ -45,3 +45,6 @@ pipelines:
           inputSteps:
             - name: step1
           foo: test
+        execution:
+          onSuccess:
+            - node common/common.js
