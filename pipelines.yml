@@ -14,6 +14,9 @@ pipelines:
           inputResources:
             - name: foo
           healthCheckUrl: https://api.github.com
+        execution:
+          onStart:
+            - sleep 7m
       - name: health_check_2
         type: HealthCheck
         syntaxVersion: 0.0.2
