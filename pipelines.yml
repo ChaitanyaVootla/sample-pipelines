@@ -1,27 +1,52 @@
-resources:
-  - name: foo
-    type: SampleResource
-    syntaxVersion: 1.0.0
-    configuration:
-      foo: bar
+#resources:
+#  - name: jb_app_jfrog
+#    type: GitRepo
+#    configuration:
+#      gitProvider: test               
+#      path: ~bharathj/jb_testing_pipelines          
 pipelines:
-  - name: sample_pipeline
+  - name: jb_test
+    configuration:
+      environmentVariables:
+        readOnly:
+          MY_MESSAGE: '"Hello World! - 6"'
     steps:
-      - name: health_check_1
-        type: HealthCheck
-        syntaxVersion: 0.0.1
-        configuration:
-          inputResources:
-            - name: foo
-          healthCheckUrl: https://api.github.com
+      - name: step_1
+        type: Bash
+#        configuration:
+#          inputResources:
+#            - name: jb_app_jfrog
         execution:
-          onStart:
-            - sleep 7m
-      - name: health_check_2
-        type: HealthCheck
-        syntaxVersion: 0.0.2
+          onExecute:
+            - echo $MY_MESSAGE
+            - echo "Running $pipeline_name | $step_name on node ID $step_node_id"
+      - name: step_2
+        type: Bash
         configuration:
           inputSteps:
-            - name: health_check_1
-          healthCheckUrl: https://api.github.com
-          notifyOnSuccess: false
+            - name: step_1
+        execution:
+          onExecute:
+            - echo $MY_MESSAGE
+            - echo "Running $pipeline_name | $step_name on node ID $step_node_id"
+      # - name: step_3
+      #   type: Bash
+      #   configuration:
+      #     inputSteps:
+      #       - name: step_1
+      #   execution:
+      #     onExecute:
+      #       - echo $MY_MESSAGE
+      #       - echo "Running $pipeline_name | $step_name on node ID $step_node_id"
+      # - name: step_4
+      #   type: Bash
+      #   configuration:
+      #     inputSteps:
+      #       - name: step_2
+      #       - name: step_3
+      #   execution:
+      #     onExecute:
+      #       - echo $MY_MESSAGE
+      #       - echo "Running $pipeline_name | $step_name on node ID $step_node_id"
+      #       - add_pipeline_variables prev_runid=$run_id           
+      #       - echo $current_runid Completed
