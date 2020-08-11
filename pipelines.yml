@@ -36,9 +36,9 @@ pipelines:
             - name: secondres
             - name: gitrepores
           foo: lol
-        #execution:
-        #  onStart:
-        #    - node test.js
+        execution:
+          onStart:
+            - get_resource_name --type GitRepo --namespace qhode --operation IN
       - name: step2
         type: drydock/sampleStep
         configuration:
