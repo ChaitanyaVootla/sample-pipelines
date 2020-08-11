@@ -29,7 +29,6 @@ pipelines:
            - echo lol
       - name: step1
         type: shippable/sampleStep
-        syntaxVersion: 1.0.3
         configuration:
           inputResources:
             - name: foo
