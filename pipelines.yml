@@ -11,8 +11,8 @@ resources:
   - name: gitrepores
     type: GitRepo
     configuration:
-      path: bharath92/pipelines
-      gitProvider: github
+      path: ChaitanyaVootla/sample-pipelines
+      gitProvider: gitResource
       branches:
         include: ^master$
   
