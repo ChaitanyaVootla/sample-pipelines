@@ -1,1 +1,28 @@
 
+GitRepo:
+  name: fooGitRepo
+  gitProvider: gitResource
+  path: ChaitanyaVootla/ymlTest
+  branches:
+    exclude: 'master'
+    include: {{gitBranch}}
+artifactoryIntegration: art
+Image:
+  name: fooImage
+  sourceRepository: foo
+  dockerImageName: foo
+  autoPull: false
+DockerBuild:
+  name: fooDockerBuild
+  dockerImageName: bharath92/alpine
+  dockerFileName: Dockerfile
+  dockerFileLocation: '.'
+  dockerImageTag: ${run_number}
+Pipeline:
+ name: boo
+DockerPush:
+  name: fooDockerPush
+  targetRepository: bharath92
+BuildInfo:
+  autoPublishBuildInfo: true
+  name: fooBuildInfo
